@@ -3,7 +3,6 @@
 PhoneBook::PhoneBook()
 {
 	this->_count = 0;
-	memset(_have, false, sizeof(_have));
 }
 
 void PhoneBook::add(void)
@@ -53,28 +52,27 @@ void PhoneBook::add(void)
 		if (std::cin.eof())
 				return ;
 	} while (secret.empty());
+	
+	if (this->_count == 8)
+		this->_count = 7;
 
-	int i = 0;
-	while (i < 8)
-	{
-		if (this->_have[i] == false)
-		{
-			this->_have[i] = true;
-			break ;
-		}
-		i++;
-	}
-	if (i == 8)
-		i = 7;
-	this->_contacts[i].set_first_name(first_name);
-	this->_contacts[i].set_last_name(last_name);
-	this->_contacts[i].set_nickname(nickname);
-	this->_contacts[i].set_number(number);
-	this->_contacts[i].set_secret(secret);
+	this->_contacts[this->_count].set_first_name(first_name);
+	this->_contacts[this->_count].set_last_name(last_name);
+	this->_contacts[this->_count].set_nickname(nickname);
+	this->_contacts[this->_count].set_number(number);
+	this->_contacts[this->_count].set_secret(secret);
+
+	this->_count++;
 }
 
 void PhoneBook::search(void)
 {
+	if (this->_count == 0)
+	{
+		std::cout << "Empty phonebook." << std::endl;
+		return ;
+	}
+
 	std::cout << "|-------------------------------------------|" << std::endl;
 	std::cout << "|index     ";
 	std::cout << "|first name";
@@ -83,70 +81,35 @@ void PhoneBook::search(void)
 	std::cout << std::endl;
 	std::cout << "|-------------------------------------------|" << std::endl;
 
-	std::string first_name;
-	std::string last_name;
-	std::string nickname;
-	int index = 1;
-	for (int i = 0; i < 8; i++)
-	{
-		if (this->_have[i] == true)
-		{
-			first_name = this->_contacts[i].get_first_name();
-			last_name = this->_contacts[i].get_last_name();
-			nickname = this->_contacts[i].get_nickname();
-			std::cout << "|";
-			std::cout << index;
-			std::cout << std::setw(10);
-			std::cout << "|";
+	this->print_contacts();
+	int	table_index = this->get_table_index();
+	if (table_index == -1)
+		return ;
+	std::cout << std::endl;
+	this->print_contact_info(table_index - 1);
+	std::cout << std::endl;
+}
 
-			if (first_name.length() <= 10)
-			{
-				std::cout << first_name;
-				std::cout << std::setw(10 - first_name.length() + 1);
-				std::cout << "|";
-			}
-			else
-			{
-				std::cout << first_name.substr(0,9) + '.';
-				std::cout << "|";
-			}
-			if (last_name.length() <= 10)
-			{
-				std::cout << last_name;
-				std::cout << std::setw(10 - last_name.length() + 1);
-				std::cout << "|";
-			}
-			else
-			{
-				std::cout << last_name.substr(0,9) + '.';
-				std::cout << "|";
-			}
-			if (nickname.length() <= 10)
-			{
-				std::cout << nickname;
-				std::cout << std::setw(10 - nickname.length() + 1);
-				std::cout << "|";
-			}
-			else
-			{
-				std::cout << nickname.substr(0,9) + '.';
-				std::cout << "|";
-			}
-			std::cout << std::endl;
-			std::cout << "|-------------------------------------------|" << std::endl;
-			index++;
-		}
-	}
+void PhoneBook::print_contact_info(int index)
+{
+	std::cout << "First Name: " << this->_contacts[index].get_first_name() << std::endl;
+	std::cout << "Last Name: " << this->_contacts[index].get_last_name() << std::endl;
+	std::cout << "Nickname: " << this->_contacts[index].get_nickname() << std::endl;
+	std::cout << "Phone Number: " << this->_contacts[index].get_number() << std::endl;
+	std::cout << "Darkest Secret: " << this->_contacts[index].get_secret() << std::endl;
+}
 
-	bool		is_all_digit;
+int PhoneBook::get_table_index(void)
+{
 	std::string user_input;
+	bool		is_all_digit;
 	while (42)
 	{
 		is_all_digit = true;
 		std::cout << "SELECT INDEX: ";
 		std::getline(std::cin, user_input);
 		if (std::cin.eof())
-				return ;
+				return (-1);
 		for (unsigned long i = 0; i < user_input.length(); i++)
 		{
 			if (user_input.at(i) < '0' || user_input.at(i) > '9')
@@ -155,7 +118,61 @@ void PhoneBook::search(void)
 				break;
 			}
 		}
-		if (is_all_digit && (std::atoi(user_input.c_str()) > 0 && std::atoi(user_input.c_str()) < index))
-			break;
+		if (is_all_digit && (std::atoi(user_input.c_str()) > 0 && std::atoi(user_input.c_str()) < this->_count + 1))
+			break ;
+	}
+	return (std::atoi(user_input.c_str()));
+}
+
+void	PhoneBook::print_contacts(void)
+{
+	std::string first_name;
+	std::string last_name;
+	std::string nickname;
+	for (int i = 0; i < this->_count; i++)
+	{
+		first_name = this->_contacts[i].get_first_name();
+		last_name = this->_contacts[i].get_last_name();
+		nickname = this->_contacts[i].get_nickname();
+		std::cout << "|";
+		std::cout << i + 1;
+		std::cout << std::setw(10);
+		std::cout << "|";
+
+		if (first_name.length() <= 10)
+		{
+				std::cout << first_name;
+				std::cout << std::setw(10 - first_name.length() + 1);
+				std::cout << "|";
+		}
+		else
+		{
+				std::cout << first_name.substr(0,9) + '.';
+				std::cout << "|";
+		}
+		if (last_name.length() <= 10)
+		{
+				std::cout << last_name;
+				std::cout << std::setw(10 - last_name.length() + 1);
+				std::cout << "|";
+		}
+		else
+		{
+				std::cout << last_name.substr(0,9) + '.';
+				std::cout << "|";
+		}
+		if (nickname.length() <= 10)
+		{
+				std::cout << nickname;
+				std::cout << std::setw(10 - nickname.length() + 1);
+				std::cout << "|";
+		}
+		else
+		{
+				std::cout << nickname.substr(0,9) + '.';
+				std::cout << "|";
+		}
+		std::cout << std::endl;
+		std::cout << "|-------------------------------------------|" << std::endl;
 	}
 }
