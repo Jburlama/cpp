@@ -37,13 +37,25 @@ void PhoneBook::add(void)
 				return ;
 	} while(nickname.empty());
 
+	bool	is_all_number;
 	do
 	{
+		is_all_number = true;
 		std::cout << "Phone number: ";
 		std::getline(std::cin, number);
 		if (std::cin.eof())
 				return ;
-	} while (number.empty());
+		for (unsigned long i = 0; i < number.length(); i++)
+		{
+			if (i == 0 && number.at(0) == '+')
+				continue ;
+			if (number.at(i) < '0' || number.at(i) > '9')
+			{
+				is_all_number = false;
+				break ;
+			}
+		}
+	} while (number.empty() || is_all_number == false);
 	
 	do
 	{
