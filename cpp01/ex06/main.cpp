@@ -25,9 +25,6 @@ int	main( int argc, char *argv[] )
 
 	switch (lvl)
 	{
-		case -1:
-			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
-			break ;
 		case 0:
 			std::cout << "[ " << levels[0] << " ]" << std::endl;
 			obj.complain(levels[0]);
@@ -46,5 +43,8 @@ int	main( int argc, char *argv[] )
 		case 3:
 			std::cout << "[ " << levels[3] << " ]" << std::endl;
 			obj.complain(levels[3]);
+			break ;
+		default:
+			std::cout << "[ Probably complaining about insignificant problems ]" << std::endl;
 	}
 }
