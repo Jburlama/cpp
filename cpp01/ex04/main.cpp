@@ -1,4 +1,4 @@
-#include "../header/sed.hpp"
+#include "sed.hpp"
 
 int	main(int argc, char *argv[])
 {
