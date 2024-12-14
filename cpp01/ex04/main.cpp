@@ -7,6 +7,11 @@ int	main(int argc, char *argv[])
 		std::cout << "Usage: <file> s1 s2" << std::endl;
 		return (0);
 	}
+	else if (!argv[2][0])
+	{
+		std::cout << "string 1 cannot be empty\n";
+		return (0);
+	}
 	std::string		outfile_name;
 	std::string		line;
 	std::ofstream	outfile;
