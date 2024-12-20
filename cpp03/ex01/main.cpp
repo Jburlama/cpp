@@ -2,7 +2,12 @@
 
 int main( void )
 {
-	ScavTrap foo("Quim");
+	ScavTrap foo("zé");
+	std::cout << "\n";
 
-	foo.attack("ze");
+	foo.attack("Quim");
+	foo.takeDamage(10);
+	foo.beRepaired(10);
+	foo.guardGate();
+	std::cout << "\n";
 }

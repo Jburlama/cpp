@@ -11,7 +11,7 @@ ClapTrap::ClapTrap()
 
 ClapTrap::ClapTrap( const std::string name )
 {
-	std::cout << "ClapTrap constructor called.\n";
+	std::cout << "ClapTrap parametized constructor called.\n";
 	this->_name = name;
 	this->_hit_point = 10;
 	this->_energy_point = 10;
@@ -29,7 +29,7 @@ ClapTrap::ClapTrap( const ClapTrap &other )
 
 ClapTrap	&ClapTrap::operator=( const ClapTrap &other )
 {
-	std::cout << "ClapTrap copy assignment constructor called.\n";
+	std::cout << "ClapTrap copy assignment operator called.\n";
 	this->_name = other._name;
 	this->_hit_point = other._hit_point;
 	this->_energy_point = other._energy_point;
