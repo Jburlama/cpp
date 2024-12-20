@@ -3,7 +3,8 @@
 int main( void )
 {
 	FragTrap foo( "ze" );
+	FragTrap baa;
 
-	foo.attack("Quim");
-	foo.highFivesGuys(  );
+	baa = foo;
+
 }
