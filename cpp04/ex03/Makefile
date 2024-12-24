@@ -6,7 +6,7 @@ NAME = materia
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
 CFILES = main.cpp AMateria.cpp Ice.cpp Cure.cpp \
-		 Character.cpp
+		 Character.cpp MateriaSource.cpp
 OBJS_DIR = ./objs/
 SRC_DIR = ./src/
 OBJS = ${addprefix ${OBJS_DIR}, ${CFILES:.cpp=.o}}
