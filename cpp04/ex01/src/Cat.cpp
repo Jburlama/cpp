@@ -5,7 +5,7 @@ Cat::Cat()
 	this->type = "Cat";
 	this->brain = new Brain;
 	for (int i = 0; i < 100; ++i)
-		this->brain->ideas[i] = "cat ";
+		this->brain->ideas[i] = "Meauuu ";
 	return ;
 }
 
@@ -35,6 +35,6 @@ Cat::~Cat()
 
 void Cat::makeSound(void) const
 {
-	std::cout << "Meaaaawwwwwww!\n";
+	std::cout << this->brain->ideas[0] << "\n";
 	return ;
 }
