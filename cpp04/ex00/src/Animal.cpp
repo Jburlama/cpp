@@ -3,10 +3,12 @@
 Animal::Animal()
 {
 	this->type = "Animal";
+	std::cout << "Animal constructor\n";
 }
 
 Animal::~Animal()
 {
+	std::cout << "Animal destructor\n";
 	return ;
 }
 
