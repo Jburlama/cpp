@@ -3,21 +3,28 @@
 
 int main()
 {
-	const Animal* meta = new Animal();
-	const Animal* j = new Dog();
-	const Animal* i = new Cat();
-	const WrongAnimal* w_cat = new WrongCat();
+	const Animal* animal = new Animal();
+	const Animal* dog = new Dog();
+	const Animal* cat = new Cat();
 
-	std::cout << j->getType() << " " << std::endl;
-	std::cout << i->getType() << " " << std::endl;
-	i->makeSound(); //will output the cat sound!
-	j->makeSound();
-	meta->makeSound();
+	const WrongAnimal* w_cat = new WrongCat();
+	std::cout << "\n";
+
+	std::cout << animal->getType() << "\n";
+	std::cout << dog->getType() << "\n";
+	std::cout << cat->getType() << "\n";
+	std::cout << w_cat->getType() << "\n";
+
+	dog->makeSound();
+	cat->makeSound();
+	animal->makeSound();
 	w_cat->makeSound();
 
-	delete meta;
-	delete j;
-	delete i;
+	std::cout << "\n";
+
+	delete animal;
+	delete dog;
+	delete cat;
 	delete w_cat;
 	return 0;
 }

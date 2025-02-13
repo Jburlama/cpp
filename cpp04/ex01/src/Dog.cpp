@@ -35,6 +35,6 @@ Dog::~Dog()
 
 void Dog::makeSound(void) const
 {
-	std::cout << "Au au au!\n";
+	std::cout << this->brain->ideas[0] << "\n";
 	return ;
 }
