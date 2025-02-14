@@ -7,7 +7,7 @@ int main(void)
 	try
 	{
 		Bureaucrat b("Quim", 70);
-		Form f("Tua Mãe", 69, 42);
+		Form f("your mom", 69, 42);
 
 		b.signForm(f);
 	}

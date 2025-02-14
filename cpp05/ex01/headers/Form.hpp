@@ -17,6 +17,8 @@ class Form: public GradeTooHighException, public GradeTooLowException
 		Form();
 	public:
 		Form(std::string name, const int required, const int execute);
+		Form(Form &other);
+		Form &operator=(const Form &other);
 		~Form() throw();
 		std::string	getName() const;
 		bool		getSigned() const;
