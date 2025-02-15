@@ -15,7 +15,7 @@ all: ${NAME}
 
 ${NAME}: ${OBJS}
 	@${CC} ${CFLAGS} ${OBJS} -o $@
-	@echo "${GREEN} ${NAME} compiled ${RESET}"
+	@echo "${GREEN}${NAME} compiled ${RESET}"
 
 ${OBJS_DIR}:
 	@mkdir objs
@@ -27,11 +27,11 @@ ${OBJS_DIR}%.o: %.cpp
 
 clean:
 	@rm -rf ${OBJS_DIR}
-	@echo "${BLUE} objects deleted ${RESET}"
+	@echo "${BLUE}objects deleted ${RESET}"
 
 fclean: clean
 	@rm -rf ${NAME}
-	@echo "${BLUE} ${NAME} deleted ${RESET}"
+	@echo "${BLUE}${NAME} deleted ${RESET}"
 
 re: fclean all
 
