@@ -2,10 +2,10 @@ GREEN = \033[32m
 BLUE = \033[34m
 RESET = \033[0m
 
-NAME = whatever
+NAME = iter
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-CFILES = main.cpp
+CFILES = main.cpp 
 OBJS_DIR = ./objs/
 SRC_DIR = ./src/
 OBJS = ${addprefix ${OBJS_DIR}, ${CFILES:.cpp=.o}}
