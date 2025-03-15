@@ -8,7 +8,8 @@
 
 class AForm;
 
-class Bureaucrat: public GradeTooHighException, public GradeTooLowException
+class Bureaucrat
+:public GradeTooHighException, public GradeTooLowException
 {
 	private:
 		const std::string	_name;
