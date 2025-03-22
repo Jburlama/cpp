@@ -96,4 +96,28 @@ int main(void)
 		}
 		std::list<int> s(mstack);
 	}
+	std::cout << "\n";
+	std::cout << "Test 4 ------------------------------------\n";
+	{
+		MutantStack<int> my_stack;
+	
+		my_stack.push(69);
+		my_stack.push(6);
+		my_stack.push(9);
+		MutantStack<int> my_stack2(my_stack);
+
+		std::cout << "Iterating over changed the Stack 2: ";
+		for (MutantStack<int>::iterator it = my_stack2.begin(); it != my_stack2.end(); it++)
+			std::cout << *it << ", ";
+		std::cout << "\n";
+
+		MutantStack<int> my_stack3;
+
+		my_stack3 = my_stack;
+	
+		std::cout << "Iterating over changed the Stack 3: ";
+		for (MutantStack<int>::iterator it = my_stack3.begin(); it != my_stack3.end(); it++)
+			std::cout << *it << ", ";
+		std::cout << "\n";
+	}
 }

@@ -11,8 +11,8 @@ class MutantStack
 		typedef typename std::stack<T>::container_type::iterator iterator;
 
 		MutantStack();
-		MutantStack(const MutantStack &other);
-		MutantStack &operator=(const MutantStack &other);
+		MutantStack(MutantStack &other);
+		MutantStack &operator=(MutantStack &other);
 		~MutantStack();
 
 		iterator begin();
@@ -38,16 +38,41 @@ MutantStack<T>::MutantStack()
 
 
 template <typename T>
-MutantStack<T>::MutantStack(const MutantStack &other)
+MutantStack<T>::MutantStack(MutantStack &other)
+:std::stack<T>()
 {
-	*this = other;
+	MutantStack<T>::iterator begin;
+	MutantStack<T>::iterator end;
+
+	begin = other.begin();
+	end = other.end();
+
+	while (begin != end)
+	{
+		this->push(*begin);
+		begin++;
+	}
 }
 
 template <typename T>
-MutantStack<T> &MutantStack<T>::operator=(const MutantStack &other)
+MutantStack<T> &MutantStack<T>::operator=(MutantStack &other)
 {
 	if (this != &other)
-		*this = other;
+	{
+		std::stack<T>();
+		
+		MutantStack<T>::iterator begin;
+		MutantStack<T>::iterator end;
+	
+		begin = other.begin();
+		end = other.end();
+	
+		while (begin != end)
+		{
+			this->push(*begin);
+			begin++;
+		}
+	}
 	return *this;
 }
 
