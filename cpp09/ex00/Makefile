@@ -5,7 +5,7 @@ RESET = \033[0m
 NAME = btc
 CC = c++
 CFLAGS = -Wall -Wextra -Werror -std=c++98
-CFILES = main.cpp get_db.cpp BitcoinExchange.cpp
+CFILES = main.cpp BitcoinExchange.cpp
 OBJS_DIR = ./objs/
 SRC_DIR = ./src/
 OBJS = ${addprefix ${OBJS_DIR}, ${CFILES:.cpp=.o}}
