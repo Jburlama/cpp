@@ -2,13 +2,9 @@
 
 int main(int argc, char **argv)
 {
-	if (argc != 2)
-	{
-		std::cerr << "Please input one text file\n";
-		return 1;
-	}
-
-	std::map<std::string, float> map_data;
+	(void)argc;
+	(void)argv;
+	std::map<Date, float> map_data;
 
 	try
 	{
