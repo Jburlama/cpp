@@ -1,10 +1,6 @@
 #include "../includes/PmergeMe.hpp"
 
 // ./PmergeMe `shuf -i 1-100 -n 10 | tr "\n" " "`
-// ./PmergeMe 2 3 80 1 0 100 1 3
-// ./PmergeMe 6 97 31 70 27 8 19 20 62 83 86 12 38 73 58 71 1 74 36 23 11 88 56 42 26 29 77 9 72 49 34 99 91 69 14 40 41 80 46 33 63 84 25 5 94 55 95 15 21 35
-// ./PmergeMe 87 7 99 42 39 38 44 47 57 18 40 85 17 25 70 43 81 6 52 41 66 21 68 11 23 83 75 69 31 49 28 65 95 56 5 78
-
 int main(int argc, char **argv)
 {
 	if (argc < 2)
@@ -18,28 +14,32 @@ int main(int argc, char **argv)
 	try
 	{
 		obj.argtolist(argv);
-
-		std::cout << "List        : ";
-		obj.print_list();
-
-		std::cout << "\n";
-		obj.sort_list(1);
-
-		std::cout << "\n";
-		std::cout << "List ordered: ";
-		obj.print_list();
-
-		std::cout << "\n";
-
-/*
-		std::cout << "Vector        : ";
 		obj.argtovector(argv);
-		obj.print_vector();
+		std::clock_t list_start;
+		std::clock_t vector_start;
+		std::clock_t list_end;
+		std::clock_t vector_end;
 
+		std::cout << "Before: ";
+		obj.print_list();
+		
+		list_start = std::clock();
+		if (list_start == -1)
+			throw std::logic_error("processor time used is not available");
+		obj.sort_list(1);
+		list_end = std::clock();
+
+		vector_start = std::clock();
+		if (vector_start == -1)
+			throw std::logic_error("processor time used is not available");
 		obj.sort_vector(1);
-		std::cout << "Vector ordered: ";
-		obj.print_vector();
-*/
+		vector_end = std::clock();
+
+		std::cout << "After: ";
+		obj.print_list();
+
+		std::cout << "Time to process a range of " << obj.get_list_size() <<" elements with std::list : " << 1000.0 * (list_end - list_start) / CLOCKS_PER_SEC << " ms\n";
+		std::cout << "Time to process a range of " << obj.get_vector_size() << " elements with std::vector : " << 1000.0 * (vector_end - vector_start) / CLOCKS_PER_SEC << " ms\n";
 
 	}
 	catch (std::logic_error &e)

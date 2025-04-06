@@ -4,6 +4,7 @@
 #include <string>
 #include <list>
 #include <vector>
+#include <ctime>
 
 class PmergeMe
 {
@@ -20,4 +21,6 @@ class PmergeMe
 		void 	sort_list(int order);
 		void 	sort_vector(int order);
 		size_t	get_jacobsthal(size_t index);
+		int		get_vector_size(void);
+		int		get_list_size(void);
 };
