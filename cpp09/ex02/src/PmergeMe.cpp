@@ -466,3 +466,64 @@ int	PmergeMe::get_vector_size(void)
 {
 	return this->_vector_size;
 }
+
+std::vector<int>::iterator	PmergeMe::get_vector_begin(void)
+{
+	return this->_vector.begin();
+}
+
+std::list<int>::iterator	PmergeMe::get_list_begin(void)
+{
+	return this->_list.begin();
+}
+
+std::vector<int>::iterator	PmergeMe::get_vector_end(void)
+{
+	return this->_vector.end();
+}
+
+std::list<int>::iterator	PmergeMe::get_list_end(void)
+{
+	return this->_list.end();
+}
+
+PmergeMe::PmergeMe()
+{
+	this->_list_size = 0;
+	this->_vector_size = 0;
+}
+
+PmergeMe::PmergeMe(PmergeMe &other)
+{
+	this->_list_size = other.get_list_size();
+	this->_vector_size = other.get_vector_size();
+
+	if (this->_vector_size > 0)
+	{
+		for (std::vector<int>::iterator it = other.get_vector_begin(); it != other.get_vector_end(); ++it)
+			this->_vector.push_back(*it);
+	}
+	if (this->_list_size > 0)
+	{
+		for (std::list<int>::iterator it = other.get_list_begin(); it != other.get_list_end(); ++it)
+			this->_list.push_back(*it);
+	}
+}
+
+PmergeMe &PmergeMe::operator=(PmergeMe &other)
+{
+	this->_list_size = other.get_list_size();
+	this->_vector_size = other.get_vector_size();
+
+	if (this->_vector_size > 0)
+	{
+		for (std::vector<int>::iterator it = other.get_vector_begin(); it != other.get_vector_end(); ++it)
+			this->_vector.push_back(*it);
+	}
+	if (this->_list_size > 0)
+	{
+		for (std::list<int>::iterator it = other.get_list_begin(); it != other.get_list_end(); ++it)
+			this->_list.push_back(*it);
+	}
+	return *this;
+}
