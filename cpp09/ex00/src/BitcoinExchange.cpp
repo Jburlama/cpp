@@ -9,6 +9,7 @@ void exchange(std::map<Date, float> map_data, char *argv)
 		throw std::logic_error("Error: could not open file.");
 
 	Date 		date;
+	Date 		lowest_date(2009, 01, 02);
 	int			poss;
 	float		value;
 
@@ -21,6 +22,8 @@ void exchange(std::map<Date, float> map_data, char *argv)
 			if (poss == -1)
 				throw std::logic_error("Error: bad input => " + line);
 			date = get_date(line.substr(0, poss).c_str());
+			if (date < lowest_date)
+				throw std::logic_error("Error: Only have record since 2009-01-02");
 			value = get_value(line.substr(++poss).c_str());
 			display_results(map_data, date, value);
 		}

@@ -3,7 +3,6 @@
 int main(int argc, char **argv)
 {
 	(void)argc;
-	(void)argv;
 	std::map<Date, float> map_data;
 
 	try
