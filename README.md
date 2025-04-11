@@ -8,7 +8,7 @@
 | Module 03 | This module is designed to help understand inheritance in C++ |
 | Module 04 | This module is designed to help understand subtype polymorphism, abstract classes, and interfaces in C++ |
 | Module 05 | This module is designed to help understand try/catch and exceptions in C++ |
-| Module 06 | This module is designed to help you understand the different types of casting in C++ |
-| Module 07 | This module is designed to help you understand templates in C++ |
-| Module 08 | This module is designed to help you understand templated containers, iterators, and algorithms in C++ |
-| Module 09 | This module is designed to help you understand containers in C++ |
+| Module 06 | This module is designed to help understand the different types of casting in C++ |
+| Module 07 | This module is designed to help understand templates in C++ |
+| Module 08 | This module is designed to help understand templated containers, iterators, and algorithms in C++ |
+| Module 09 | This module is designed to help understand containers in C++ |
